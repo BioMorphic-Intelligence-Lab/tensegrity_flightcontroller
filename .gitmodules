@@ -1,0 +1,3 @@
+[submodule "GeneralCode"]
+	path = GeneralCode
+	url = git@github.com:muellerlab/GeneralCode.git

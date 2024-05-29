@@ -1,3 +1,6 @@
 [submodule "GeneralCode"]
 	path = GeneralCode
 	url = git@github.com:muellerlab/GeneralCode.git
+[submodule "PX4-firmware"]
+	path = PX4-firmware
+	url = git@github.com:muellerlab/PX4-firmware.git

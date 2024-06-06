@@ -26,8 +26,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq && apt-
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build
 RUN echo "source /home/ws/devel/setup.bash" >> /etc/bash.bashrc
 
+# Set ros master URI
+ENV ROS_MASTER_URI=http://169.254.21.103:11311
+# Set ROS_IP to my current IP address
+ENV ROS_IP=$(hostname -I | awk '{print $1}')
+
 # Add the entrypoint script
-#ADD controller_entrypoint.sh /entrypoint.sh
-#RUN chmod +x /entrypoint.sh
-#ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

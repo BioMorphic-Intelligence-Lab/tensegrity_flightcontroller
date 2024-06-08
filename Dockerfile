@@ -23,13 +23,16 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq && apt-
     && rm -rf /var/lib/apt/lists/* 
 
 # Source ROS and compile package
-RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build
+RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build hiperlab_common
+RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build hiperlab_components
+RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build hiperlab_rostools
+RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin build hiperlab_hardware
+
 RUN echo "source /home/ws/devel/setup.bash" >> /etc/bash.bashrc
 
 # Set ros master URI
 ENV ROS_MASTER_URI=http://169.254.21.103:11311
-# Set ROS_IP to my current IP address
-ENV ROS_IP=$(hostname -I | awk '{print $1}')
+# Source the profile to set ROS_IP
+RUN echo "source /etc/profile.d/ros_ip.sh" >> ~/.bashrc
 
-# Add the entrypoint script
 CMD ["bash"]

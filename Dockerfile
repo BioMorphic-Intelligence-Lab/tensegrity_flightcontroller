@@ -7,6 +7,11 @@ FROM osrf/ros:${ROS_DISTRO}-desktop-full
 # Restate the arg to make it available in later stage
 ARG ROS_DISTRO
 
+# Add aliases
+WORKDIR /root
+ADD .bash_aliases .bash_aliases
+RUN echo "$(<.bash_aliases)" >> .bashrc
+
 # Ad the source code to the correct folder
 WORKDIR /home/ws/
 ADD ./GeneralCode/ROS/hiperlab_common/ ./src/hiperlab_common/
@@ -33,6 +38,7 @@ RUN echo "source /home/ws/devel/setup.bash" >> /etc/bash.bashrc
 # Set ros master URI
 ENV ROS_MASTER_URI=http://169.254.21.103:11311
 # Source the profile to set ROS_IP
-RUN echo "source /etc/profile.d/ros_ip.sh" >> ~/.bashrc
+ADD ./set_ros_ip.sh /
+RUN echo "source /set_ros_ip.sh" >> ~/.bashrc
 
 CMD ["bash"]

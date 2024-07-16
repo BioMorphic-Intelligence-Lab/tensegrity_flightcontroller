@@ -10,7 +10,7 @@ ARG ROS_DISTRO
 # Flag for whether to set ROS_MASTER_URI and ROS_IP; can be "real" or "sim"
 ARG ROS_ENV="real" 
 
-# Add alhttp://169.254.21.103:11311iases
+# Add aliases
 WORKDIR /root
 ADD .bash_aliases .bash_aliases
 RUN echo "$(<.bash_aliases)" >> .bashrc

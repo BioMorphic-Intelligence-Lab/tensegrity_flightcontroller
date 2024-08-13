@@ -4,3 +4,6 @@
 [submodule "PX4-firmware"]
 	path = PX4-firmware
 	url = git@github.com:muellerlab/PX4-firmware.git
+[submodule "tensegrity-sysID"]
+	path = tensegrity-sysID
+	url = git@github.com:BioMorphic-Intelligence-Lab/tensegrity-sysID.git

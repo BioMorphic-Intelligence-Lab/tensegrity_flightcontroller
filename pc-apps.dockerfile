@@ -11,6 +11,7 @@ WORKDIR /home/ws/
 ADD ./GeneralCode/Common/ ./Common
 ADD ./GeneralCode/Components/ ./Components
 ADD ./GeneralCode/PC-Apps/ ./PC-Apps/
+RUN mkdir ./Logs
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq && apt-get install -y \
     build-essential \
@@ -35,5 +36,7 @@ RUN mkdir -p build && cd build && \
           -DCMAKE_EXE_LINKER_FLAGS="-L/home/ws/Common/build/lib -L/home/ws/Components/build/lib" \
           .. \
     && make
+
+WORKDIR /home/ws
 
 CMD ["bash"]

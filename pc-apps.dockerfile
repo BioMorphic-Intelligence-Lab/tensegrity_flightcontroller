@@ -11,14 +11,17 @@ WORKDIR /home/ws/
 ADD ./GeneralCode/Common/ ./Common
 ADD ./GeneralCode/Components/ ./Components
 ADD ./GeneralCode/PC-Apps/ ./PC-Apps/
+ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSim.py ./monteCarloSim.py
 RUN mkdir ./Logs
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq && apt-get install -y \
     build-essential \
     cmake \
     libeigen3-dev \
+    python3 python-is-python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install numpy
 
 # Build the Common library
 WORKDIR /home/ws/Common

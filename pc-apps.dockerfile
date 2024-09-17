@@ -11,7 +11,10 @@ WORKDIR /home/ws/
 ADD ./GeneralCode/Common/ ./Common
 ADD ./GeneralCode/Components/ ./Components
 ADD ./GeneralCode/PC-Apps/ ./PC-Apps/
-ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSim.py ./monteCarloSim.py
+ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSimRecoverHover.py  ./monteCarloSimRecoverHover.py
+ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSimRecoverHoverBaseline1.py  ./monteCarloSimRecoverHoverBaseline1.py
+ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSimRecoverHoverBaseline2.py  ./monteCarloSimRecoverHoverBaseline2.py
+ADD ./GeneralCode/Scripts/MonteCarloSim/monteCarloSimRecoverReplan.py ./monteCarloSimRecoverReplan.py
 RUN mkdir ./Logs
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq && apt-get install -y \
